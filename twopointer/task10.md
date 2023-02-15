@@ -1,0 +1,1 @@
+<!-- http://codeforces.com/contest/84/problem/B -->
