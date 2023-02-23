@@ -1,0 +1,8 @@
+{
+  "files.associations": {
+    "*.html": "django-html",
+    "*css": "tailwindcss",
+    "*.mdx": "markdown",
+    "iostream": "cpp"
+  }
+}
