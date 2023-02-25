@@ -20,8 +20,8 @@ T binpow(T &a, long long n)
 
 struct Matrix
 {
-  vii a;
   int sz;
+  vii a;
 
   Matrix(int n) : sz(n), a(vii(n, vi(n, 0))) {}
 };

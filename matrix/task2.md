@@ -1,6 +1,7 @@
 # Nhân ma trận 2
 
 Cho dãy số $A$ được xây dựng từ công thức đệ quy sau:
+
 $$
 A_1=1, A_2=2, A_n=2\cdot A_{n-1}+A_{n-2}
 $$

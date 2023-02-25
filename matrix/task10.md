@@ -1,6 +1,7 @@
 # Nhân ma trận 10
 
 Cho dãy số $A$ được xây dựng từ công thức đệ quy sau:
+
 $$
 A_1=1, A_2=3, A_3=7, A_n=3\cdot A_{n-1}-2\cdot A_{n-2}+3\cdot A_{n-3}
 $$

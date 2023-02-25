@@ -1,13 +1,15 @@
 # Nhân ma trận 15
 
 Cho dãy số $A$ được xây dựng từ công thức đệ quy sau:
+
 $$
 A_1=1, A_2=3, A_n=3\cdot A_{n-1}-2\cdot A_{n-2}
 $$
 
 Cho một số nguyên dương $N$ tính:
+
 $$
-A_1^2+A_2^2+\cdots +A_N^2\pmod{10^9+7}
+\sum_{i=1}^{n}{i\cdot A_i}\pmod{10^9+7}
 $$
 
 ## Input
@@ -28,3 +30,4 @@ $$
 
 |Input|Output|
 |-|-|
+|2<br>3<br>6|28<br>621|

@@ -20,8 +20,8 @@ T binpow(T &a, long long n)
 
 struct Matrix
 {
-  vii a;
   int sz;
+  vii a;
 
   Matrix(int n) : sz(n), a(vii(n, vi(n, 0))) {}
 };
@@ -54,8 +54,8 @@ int main(int argc, char const *argv[])
   // single.a[1][0] = 1;
 
   // // Task 3
-  // single.a[0][0] = 3;
-  // single.a[1][0] = 1;
+  // single.a[0][0] = 2;
+  // single.a[1][0] = 3;
 
   // // Task 4
   // single.a[0][0] = 3;
