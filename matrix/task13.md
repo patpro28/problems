@@ -9,22 +9,25 @@ $$
 Cho một số nguyên dương $N$ tính:
 
 $$
-A_1^2+A_2^2+\cdots +A_N^2\pmod{10^9+7}
+A_1 + A_2 + \cdots + A_N \pmod{10^9+7}
 $$
 
 ## Input
 
-- Một dòng chứa một số nguyên dương $N$.
+- Dòng đầu chứa một số nguyên $T$ là số bộ test.
+- $T$ dòng tiếp theo, mỗi dòng chứa một số nguyên dương $N$.
 
 ## Output
 
-- Một dòng chứa kết quả bài toán.
+- $T$ dòng chứa kết quả bài toán.
 
 ## Constraints
 
-- $1\le N\le 10^9$
+- $1\le T\le 100$
+- $1\le N\le 10^{18}$
 
 ## Example
 
 |Input|Output|
 |-|-|
+|1<br>10|22143|

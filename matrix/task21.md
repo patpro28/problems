@@ -1,4 +1,4 @@
-# Nhân ma trận 15
+# Nhân ma trận 21
 
 Cho dãy số $A$ được xây dựng từ công thức đệ quy sau:
 

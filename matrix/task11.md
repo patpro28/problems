@@ -9,7 +9,7 @@ $$
 Cho một số nguyên dương $N$ tính:
 
 $$
-A_1^2+A_2^2+\cdots +A_N^2\pmod{10^9+7}
+A_1 + A_2 + \cdots + A_N \pmod{10^9+7}
 $$
 
 ## Input
@@ -22,9 +22,10 @@ $$
 
 ## Constraints
 
-- $1\le N\le 10^9$
+- $1\le N\le 10^{18}$
 
 ## Example
 
 |Input|Output|
 |-|-|
+|10|143|
