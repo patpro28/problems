@@ -43,7 +43,7 @@ int main()
   cin.tie(NULL), cout.tie(NULL);
   long long n;
   cin >> n;
-  Matrix single(3);
+  Matrix single(4);
   
   // // Task 11
   // single.a[0] = {1, 1, 1};
@@ -55,21 +55,27 @@ int main()
   // single.a[1] = {1, 0, 0};
   // single.a[2] = {0, 0, 1};
 
-  // Task 13
-  single.a[0] = {2, 1, 1};
-  single.a[1] = {3, 0, 0};
-  single.a[2] = {0, 0, 1};
+  // // Task 13
+  // single.a = {
+  //   {2, 1, 1},
+  //   {3, 0, 0},
+  //   {0, 0, 1}
+  // };
 
-  // // Task 14
-  // single.a[0][0] = 3;
-  // single.a[1][0] = 2;
+  // Task 14
+  single.a = {
+    {1, 0, 0, 0},
+    {2, 2, 0, 0},
+    {1, 1, 1, 0},
+    {1, 1, 1, 1}
+  };
 
   // // Task 15
   // single.a[0][0] = 3;
   // single.a[1][0] = -2;
 
   auto res = binpow(single, n);
-  cout << (res.a[0][2] + mod) % mod << endl;
+  cout << res.a[3][0]<< endl;
 
   return 0;
 }

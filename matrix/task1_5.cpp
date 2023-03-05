@@ -2,9 +2,13 @@
 
 using namespace std;
 
-using vi = vector<long long>;
-using vii = vector<vi>;
-const int mod = 1e9 + 7;
+template<typename T>
+using vi = vector<T>;
+template<typename T>
+using vii = vi<vi<T>>;
+
+using u64 = uint64_t;
+using u128 = __uint128_t;
 
 template <typename T>
 T binpow(T &a, long long n)
@@ -21,10 +25,12 @@ T binpow(T &a, long long n)
 struct Matrix
 {
   int sz;
-  vii a;
+  vii<u64> a;
 
-  Matrix(int n) : sz(n), a(vii(n, vi(n, 0))) {}
+  Matrix(int n) : sz(n), a(vii<u64>(n, vi<u64>(n, 0))) {}
 };
+
+u64 mod;
 
 Matrix operator*(const Matrix &a, const Matrix &b)
 {
@@ -33,21 +39,22 @@ Matrix operator*(const Matrix &a, const Matrix &b)
   for (int i = 0; i < a.sz; ++i)
     for (int j = 0; j < a.sz; ++j)
       for (int k = 0; k < a.sz; ++k)
-        (c.a[i][j] += a.a[i][k] * b.a[k][j]) %= mod;
+        (c.a[i][j] += (u128) a.a[i][k] * b.a[k][j] % mod) %= mod;
   return c;
 }
 
-int main(int argc, char const *argv[])
+int main()
 {
   ios_base::sync_with_stdio(false);
   cin.tie(NULL), cout.tie(NULL);
-  int n;
-  cin >> n;
+  u64 n, m;
+  cin >> n >> m;
+  mod = m;
   Matrix single(2);
   
   // // Task 1
-  // single.a[0][0] = 1;
-  // single.a[1][0] = 1;
+  // single.a[0] = {1, 1};
+  // single.a[1] = {1, 0};
 
   // // Task 2
   // single.a[0][0] = 2;
@@ -57,21 +64,21 @@ int main(int argc, char const *argv[])
   // single.a[0][0] = 2;
   // single.a[1][0] = 3;
 
-  // // Task 4
-  // single.a[0][0] = 3;
-  // single.a[1][0] = 2;
+  // Task 4
+  single.a[0] = {3, 1};
+  single.a[1] = {2, 0};
 
   // // Task 5
   // single.a[0][0] = 3;
   // single.a[1][0] = -2;
-  single.a[0][1] = 1;
-  single.a[1][1] = 0;
+  // single.a[0][1] = 1;
+  // single.a[1][1] = 0;
   if (n <= 1)
     cout << n << '\n';
   else
   {
     auto res = binpow(single, n - 1);
-    cout << (res.a[0][0] + mod) % mod << endl;
+    cout << res.a[0][0] << endl;
   }
   return 0;
 }

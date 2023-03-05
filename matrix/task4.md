@@ -6,7 +6,9 @@ $$
 A_1=1, A_2=3, A_n=3\cdot A_{n-1}+2\cdot A_{n-2}
 $$
 
-Cho một số nguyên dương $N$ tính, $A_N\pmod{10^9+7}$
+Cho hai số nguyên dương $N$ và $M$ tính:
+
+$$A_N\bmod{M}$$
 
 ## Input
 
@@ -18,10 +20,10 @@ Cho một số nguyên dương $N$ tính, $A_N\pmod{10^9+7}$
 
 ## Constraints
 
-- $1\le N\le 10^9$
+- $1\le N, M\le 10^{18}$
 
 ## Example
 
 |Input|Output|
 |-|-|
-|10|79647|
+|10 100000|79647|

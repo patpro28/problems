@@ -1,17 +1,19 @@
-# Nhân ma trận 10
+# Nhân ma trận 14
 
 Cho dãy số $A$ được xây dựng từ công thức đệ quy sau:
 
 $$
 \begin{split}
    A_1&=1 \\
-   A_2&=3 \\
-   A_3&=7 \\
-   A_n&=3\cdot A_{n-1}-2\cdot A_{n-2}+5\cdot A_{n-3}
+   A_n&=2\cdot A_{n-1}+n
 \end{split}
 $$
 
-Cho một số nguyên dương $N$ tính, $A_N\pmod{10^9+7}$
+Cho một số nguyên dương $N$ tính:
+
+$$
+A_1 + A_2 + \cdots + A_N \pmod{10^9+7}
+$$
 
 ## Input
 
@@ -31,4 +33,4 @@ Cho một số nguyên dương $N$ tính, $A_N\pmod{10^9+7}$
 
 |Input|Output|
 |-|-|
-|1<br>10|6705|
+|2<br>6<br>10|219<br>4017|

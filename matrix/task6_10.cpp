@@ -37,18 +37,19 @@ Matrix operator*(const Matrix &a, const Matrix &b)
   return c;
 }
 
-int main(int argc, char const *argv[])
+int main()
 {
   ios_base::sync_with_stdio(false);
   cin.tie(NULL), cout.tie(NULL);
   int n;
-  cin >> n;
   Matrix single(3);
   
   // // Task 6
-  // single.a[0][0] = 1;
-  // single.a[1][0] = 1;
-  // single.a[2][0] = 1;
+  // single.a = {
+  //   {1, 1, 0},
+  //   {1, 0, 1},
+  //   {1, 0, 0}
+  // };
 
   // // Task 7
   // single.a[0][0] = 2;
@@ -61,24 +62,29 @@ int main(int argc, char const *argv[])
   // single.a[2][0] = 1;
 
   // // Task 9
-  // single.a[0][0] = 3;
-  // single.a[1][0] = 2;
-  // single.a[2][0] = 5;
+  // single.a = {
+  //   {3, 1, 0},
+  //   {2, 0, 1},
+  //   {5, 0, 0}
+  // };
 
-  // // Task 10
-  // single.a[0][0] = 3;
-  // single.a[1][0] = -2;
-  // single.a[2][0] = 3;
-
-  single.a[0][1] = 1;
-  single.a[1][2] = 1;
-  single.a[1][1] = 0;
-  if (n <= 1)
-    cout << n << '\n';
-  else
-  {
-    auto res = binpow(single, n - 1);
-    cout << (res.a[0][0] + mod) % mod << endl;
+  // Task 10
+  single.a = {
+    {       3, 1, 0},
+    { mod - 2, 0, 1},
+    {       3, 0, 0}
+  };
+  int t;
+  cin >> t;
+  while (t--) {
+    cin >> n;
+    if (n <= 1)
+      cout << n << '\n';
+    else
+    {
+      auto res = binpow(single, n - 1);
+      cout << res.a[0][0] << endl;
+    }
   }
   return 0;
 }
