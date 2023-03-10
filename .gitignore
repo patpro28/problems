@@ -1,2 +1,11 @@
+.idea
+.vscode
+.sass-cache
+*.sqlite3
+*.py[co]
+*.mo
+*~
+*.swp
+static
 venv
-*.txt
+node_modules
