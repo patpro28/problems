@@ -1,0 +1,88 @@
+\documentclass[main.tex]{subfiles}
+
+\begin{document}
+
+\chapter{Routes, Templates và Statics}
+
+\section{Route}
+
+Trong Flask, \mintinline{python}|route| là một decorator để đăng ký một URL và liến kết nó với một hàm xử lý để xử lý request được gửi đến URL đó.
+
+\textcolor{red}{\bfseries
+Hiểu đơn giản thì route dùng để tạo URL cho trang web.
+}
+
+Cú pháp sử dụng decorator \mintinline{python}|route| như sau:
+
+\begin{minted}[gobble=2, framesep=5mm, bgcolor=bgcode]{python}
+  from flask import Flask
+
+  app = Flask(__name__)
+
+  @app.route('/hello')
+  def hello():
+      return 'Hello, World!'
+\end{minted}
+
+Trong ví dụ trên \mintinline{python}|route('/hello')| sẽ đăng ký địa chỉ \mintinline{python}|'/hello'| và liên kết hàm \mintinline{python}|hello()| để xử lý request đến địa chỉ đó. Khi có request đến địa \mintinline{python}|'/hello'| và trả về chuỗi \mintinline{python}|'Hello, World!'|
+
+Trong Flask, chúng ta cũng có thể truyền tham số cho route bằng cách sử dụng cặp dấu lớn bé \mintinline{python}|'<,>'|. Ví dụ, để truyền một tham số \mintinline{python}|id| vào route, ta có thể định nghĩa route như sau:
+
+\begin{minted}[gobble=2, framesep=5mm, bgcolor=bgcode]{python}
+  from flask import Flask
+
+  app = Flask(__name__)
+
+  @app.route('/user/<int:id>')
+  def user_profile(id):
+      return f"User profile page for user with ID {id}"
+\end{minted}
+
+Trong ví dụ trên, chúng ta định nghĩa một route có tên 
+\mintinline{python}|'/user/<int:id>'| với một tham số \mintinline{python}|id| là một số nguyên 
+(sử dụng type converter \mintinline{python}|int|). Khi một request được gửi đến
+đường dẫn \mintinline{python}|'/user/123'|.
+Flask sẽ gọi hàm \mintinline{python}|user_profile(123)| và trả về thông tin trang cá nhân của người dùng có ID là \mintinline{python}|123|.
+
+Ngoài type converter \mintinline{python3}|int|, Flask còn hỗ trợ nhiều type converter khác như \mintinline{python}|string|, \mintinline{python}|float|, \mintinline{python}|path|, \mintinline{python}|uuid|, \mintinline{python}|any|,... để chuyển đổi định dạng tham số của route thành các kiểu dữ liệu khác nhau.
+
+\section{Templates}
+
+Trong Flask, template là một file chứa các dòng code HTML, CSS và Javascript, được sử dụng để hiển thị nội dung trả về từ các view function. Flask sử dụng Jinja2 làm engine để render templates.
+
+Templates giúp phân tách logic của ứng dụng và giao diện người dùng. Khi có yêu cầu từ client, Flask sẽ gọi view function tương ứng để xử lý dữ liệu và trả về kết quả dưới dạng một HTML response, được tạo ra bằng cách render một template.
+
+Các template được lưu trữ trong thư mục \textcolor{red}{\mintinline{text}|templates|} trong project của bạn. Để render một template, Flask sử dụng hàm \textcolor{red}{\mintinline{python}|render_template|} và truyền vào tên của file template và các biến context nếu có.
+
+Ví dụ để render một file template có tên là \mintinline{text}|'index.html'| nằm trong thư mục \textcolor{red}{\mintinline{text}|templates|} và truyền vào một biến \mintinline{python}|name| có giá trị là \mintinline{python}|"John"|:
+
+\begin{minted}[gobble=2, framesep=5mm, bgcolor=bgcode]{python}
+  from flask import Flask, render_template
+
+  app = Flask(__name__)
+
+  @app.route("/")
+  def index():
+      name = "John"
+      return render_template("index.html", name=name)
+\end{minted}
+
+Các biến được truyền vào template có thể được sử dụng trong template bằng cách sử dụng cú pháp \mintinline{jinja}|{{ variable_name }}|. Ví dụ file \mintinline{python}|'index.html'|:
+
+\begin{minted}[gobble=2, framesep=5mm, bgcolor=bgcode]{html}
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <title>Welcome {{ name }}</title>
+    </head>
+    <body>
+      <h1>Hello {{ name }}!</h1>
+    </body>
+  </html>
+\end{minted}
+
+\section{Statics}
+
+Trong Flask, các file tĩnh (như CSS, JavaScript, hình ảnh...) được lưu trữ trong thư mục \mintinline{python}|static| tại thư mục gốc của ứng dụng. Thư mục \mintinline{python}|static| được Flask hiểu là nơi lưu trữ các file tĩnh, và khi cần truy cập các file này, ta sử dụng đường dẫn tương đối đến thư mục \mintinline{python}|static|.
+
+\end{document}
