@@ -2,72 +2,36 @@
 
 using namespace std;
 
-using vi = vector<long long>;
-using vii = vector<vi>;
+int n;
+long long f[15][13 * 9][13 * 9][2];
+string s;
 
-template <typename T>
-T binpow(T &a, long long n)
-{
-  if (n == 1)
-    return a;
-  T ans = binpow(a, n / 2);
-  ans = ans * ans;
-  if (n & 1)
-    ans = ans * a;
-  return ans;
+long long cal(int sum, int ok, int m, int i = 0, int mod = 0) {
+  if (sum < 0)
+    return 0;
+  if (i == n)
+    return sum == 0 and mod == 0;
+  if (f[i][sum][mod][ok] != -1)
+    return f[i][sum][mod][ok];
+  long long ans = 0;
+  for (int j = 0; j <= (ok ? 9 : s[i] - '0'); ++j)
+    ans += cal(sum - j, ok | (j < s[i] - '0'), m, i + 1, (mod * 10 + j) % m);
+  return f[i][sum][mod][ok] = ans;
 }
 
-struct Matrix
-{
-  int sz;
-  vii a;
-
-  Matrix(int n) : sz(n), a(vii(n, vi(n, 0))) {}
-};
-
-long long mod = 1e9 + 7;
-
-Matrix operator*(const Matrix &a, const Matrix &b)
-{
-  Matrix c(a.sz);
-  assert(a.sz == b.sz);
-  for (int i = 0; i < a.sz; ++i)
-    for (int j = 0; j < a.sz; ++j)
-      for (int k = 0; k < a.sz; ++k)
-        (c.a[i][j] += a.a[i][k] * b.a[k][j]) %= mod;
-  return c;
-}
-
-int main()
-{
+int main(int argc, char const *argv[]) {
   ios_base::sync_with_stdio(false);
   cin.tie(NULL), cout.tie(NULL);
-  Matrix single(5);
-  single.a[0] = {3, 1, 3, 0, 0};
-  single.a[1] = {-2, 0, -4, 0, 0};
-  single.a[2] = {0, 0, 3, 1, 1};
-  single.a[3] = {0, 0, -2, 0, 0};
-  single.a[4] = {0, 0, 0, 0, 1};
-  // int t;
-  // cin >> t;
-  // while (t--) {
-  //   long long a, n, m;
-  //   cin >> a >> n >> m;
-  //   mod = m;
-  //   a %= mod;
-  //   long long tmp = a * a % mod;
-  //   single.a[0][0] = 4 * tmp % mod;
-  //   single.a[2][0] = 4 * (mod - a) % mod;
-  //   single.a[0][2] = 2 * a % mod;
-  //   single.a[2][2] = mod - 1;
-  //   int x = 3;
-  //   cout << (tmp * res.a[0][x] + res.a[1][x] + a * res.a[2][x] + res.a[3][x]) % mod << endl;
-  // }
-  int n;
-  cin >> n;
-  if (n == 1) return cout << 1, 0;
-  auto res = binpow(single, n - 1);
-  int x = 4;
-  cout << (3 * res.a[0][x] + res.a[1][x] + 6 * res.a[2][x] + res.a[3][x] + res.a[4][x] + 12 * mod) % mod << endl;
+  cin >> s;
+  n = s.length();
+  long long ans = 0;
+  for(int i = 1; i <= 9 * n; ++i) {
+    for(int i = 0; i < 15; i++)
+      for(int s = 0; s <= 9 * n; ++s)
+        for(int k = 0; k < 9 * n; ++k)
+          f[i][s][k][0] = f[i][s][k][1] = -1;
+    ans += cal(i, 0, i);
+  }
+  cout << ans << endl;
   return 0;
 }
