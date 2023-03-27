@@ -1,3 +1,6 @@
+<!-- https://www.codechef.com/problems/DGTCNT -->
+<!-- Difficult: 2 -->
+
 # Task 3
 
 An yêu các số tự nhiên, tuy nhiên không phải tất cả chúng. Vì một số lý do cá nhân, anh ấy cho rằng các con số $a_0,a_1,...,a_9$ là các con số không may mắn. Với một số tự nhiên $x$, nếu có một chữ số $i$ xuất hiện chính xác $a_i$ lần (không tính các số $0$ vô nghĩa), thì An sẽ không thích $x$. Ngược lại $An$ sẽ thích $x$.
