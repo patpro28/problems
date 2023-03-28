@@ -15,8 +15,8 @@ Tính số cách chọn mà An có thể chọn.
 
 ## Constraints
 
-- $1\le N\le 100$.
-- $1\le M\le 15$.
+- $1\le N\le 10^6$.
+- $1\le M\le 20$.
 
 ## Example
 
