@@ -29,7 +29,7 @@ Chúng ta sẽ cố gắng xây dựng tất cả các hoán vị.
 
 Chúng ta sẽ chèn các số từ $1$ đến $n$ theo thứ tự tăng dần. Khi chúng ta chèn số $i+1$, chúng ta sẽ có một vài khối hoặc thành phần nối của hoán vị sẽ chứa tất cả các số từ $1$ đến $i$. Hãy tập trung vào giai đoạn thứ $i$ này:
 
-Ví dụ nếu chúng ta sắp chèn số $4$, và chúng ta đang đếm số hoán vị có kích thước $7$, chúng ta có thể có hai thành phần, như $(2)$ và $(3, 1)$, điều đó có nghĩa là hoán vị cuối cùng sẽ có dạng $(2,\_,\_,3,1,\_,\_)$ hoặc $(\_,2,\_,3,1,\_,\_)$, tức là sẽ có một số giá trị giữa mỗi thành phần (lớn hơn $i$, vì tất cả các giá trị nhỏ hơn $i$ đã được đặt), sẽ được đặt trong một thao tác sau đó, các thành phần sẽ xuất hiện theo thứ tự, và các số kề nhau trong các thành phần sẽ kề nhau trong hoán vị cuối cùng.
+Ví dụ nếu chúng ta sắp chèn số $4$, và chúng ta đang đếm số hoán vị có kích thước $7$, chúng ta có thể có hai thành phần, như $(2)$ và $(3, 1)$, điều đó có nghĩa là hoán vị cuối cùng sẽ có dạng $(2,\*,\*,3,1,\*,\*)$ hoặc $(\*,2,\*,3,1,\*,\*)$, tức là sẽ có một số giá trị giữa mỗi thành phần (lớn hơn $i$, vì tất cả các giá trị nhỏ hơn $i$ đã được đặt), sẽ được đặt trong một thao tác sau đó, các thành phần sẽ xuất hiện theo thứ tự, và các số kề nhau trong các thành phần sẽ kề nhau trong hoán vị cuối cùng.
 
 <!-- We will try to build all the permutations.
 
@@ -59,7 +59,7 @@ Bây giờ, để tính các chuyển trạng thái, hãy suy nghĩ xem việc c
 
 -   Chúng ta có thể tạo ra một thành phần mới chỉ chứa số $i+1$, chúng ta có thể đặt thành phần mới này ở bất kỳ vị trí nào giữa hai thành phần đã tồn tại, trước thành phần đầu tiên, hoặc sau thành phần cuối cùng. Chuyển trạng thái này sẽ là $DP_{i+1, j+1} = DP_{i+1, j+1}+ DP_{i, j} \cdot (j + 1)$ vì chúng ta sẽ kết thúc với một thành phần mới, và chúng ta sẽ có $(j+1)$ vị trí có sẵn.
 
--   Chúng ta có thể thêm số $(i+1)$ vào đầu hoặc cuối của bất kỳ thành phần đã tồn tại nào, giả sử chúng ta có tập hợp các thành phần này $\{(1, 2), (4), (3, 5)\}$, chúng ta có thể đặt $6$ vào đầu hoặc cuối của bất kỳ thành phần nào, nếu chúng ta đặt vào đầu của thành phần đầu tiên, chúng ta sẽ kết thúc với $\{(6, 1, 2), (4), (3, 5)\}$. Chuyển trạng thái này sẽ là $DP_{i+1, j} = DP_{i+1, j}+ DP_{i, j} \times (2 \cdot j)$, vì chúng ta sẽ kết thúc với cùng số lượng thành phần, và chúng ta sẽ có $(2\cdot j)$ vị trí có sẵn cho $i+1$.
+-   Chúng ta có thể thêm số $(i+1)$ vào đầu hoặc cuối của bất kỳ thành phần đã tồn tại nào, giả sử chúng ta có tập hợp các thành phần này $\{(1, 2), (4), (3, 5)\}$, chúng ta có thể đặt $6$ vào đầu hoặc cuối của bất kỳ thành phần nào, nếu chúng ta đặt vào đầu của thành phần đầu tiên, chúng ta sẽ kết thúc với ${(6, 1, 2), (4), (3, 5)}$. Chuyển trạng thái này sẽ là $DP_{i+1, j} = DP_{i+1, j}+ DP_{i, j} \times (2 \cdot j)$, vì chúng ta sẽ kết thúc với cùng số lượng thành phần, và chúng ta sẽ có $(2\cdot j)$ vị trí có sẵn cho $i+1$.
 
 -   Chúng ta có thể hợp nhất hai thành phần thành một thành phần lớn bằng cách đặt $i+1$ ở cuối một thành phần và ở đầu của thành phần tiếp theo cùng lúc. Ví dụ, nếu ta có tập hợp các thành phần $\{(1, 2), (4), (3, 5)\}$, ta có thể hợp nhất thành phần đầu tiên và thứ hai với số $6$, điều đó sẽ dẫn đến $\{(1, 2, 6, 4), (3, 5)\}$. Chuyển trạng thái này sẽ là $DP_{i+1, j-1} = DP_{i+1, j-1} + DP_{i, j} \cdot (j - 1)$, vì chúng ta sẽ có một thành phần ít hơn (chúng ta đã hợp nhất hai thành phần thành một), và chúng ta có thể hợp nhất bất kỳ hai thành phần liên tiếp nào, vì vậy có $(j - 1)$ lựa chọn.
 
