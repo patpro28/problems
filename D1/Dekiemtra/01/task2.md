@@ -30,3 +30,4 @@ Hãy đếm xem có bao nhiêu cặp có thể nhìn thấy nhau trong hàng.
 
 - **Subtask 1 (40%)**: $N\le 500$
 - **Subtask 2 (30%)**: $N\le 5000$
+
