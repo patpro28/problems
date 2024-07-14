@@ -11,8 +11,8 @@ An muốn đếm số lượng số tự nhiên trong đoạn $[L, R]$ mà An th
 
 - Dòng đầu chứa một số nguyên dương $T$ là số bộ test.
 - Mỗi bộ test sẽ có định dạng như sau:
-  - Dòng đầu chứa 2 số nguyên dương $L, R$.
-  - Dòng 2 chứa chính xác $10$ số nguyên $a_i$.
+    - Dòng đầu chứa 2 số nguyên dương $L, R$.
+    - Dòng 2 chứa chính xác $10$ số nguyên $a_i$.
 
 ## Output
 
@@ -24,8 +24,15 @@ An muốn đếm số lượng số tự nhiên trong đoạn $[L, R]$ mà An th
 - $1\le L\le R\le 10^{18}$
 - $0\le a_i\le 18$
 
-## Example
+## Sample Input
 
-|Input|Output|
-|-|-|
-|2<br>21 28<br>5 4 3 2 1 1 2 3 4 5<br>233 23333<br>2 3 3 3 3 2 3 3 3 3|6<br>19627|
+    2
+    21 28
+    5 4 3 2 1 1 2 3 4 5
+    233 23333
+    2 3 3 3 3 2 3 3 3 3
+
+## Sample Output
+
+    6
+    19627

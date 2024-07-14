@@ -1,12 +1,13 @@
-import re
-import requests
 import getpass
-from lxml import html, etree
-from lxml.html import HtmlElement
-from typing import Any, List, Tuple
-from pathlib import Path
+import re
 from functools import lru_cache
+from pathlib import Path
+from typing import List, Tuple
 from urllib.request import urlretrieve
+
+import requests
+from lxml import html
+from lxml.html import HtmlElement
 
 BASE_DIR = Path(__file__).resolve().parent
 
@@ -63,7 +64,7 @@ def login(nick: str = USERNAME, password: str = PASSWORD):
     # Check result
     if response.status_code == 200:
     # Check the response content or other indicators of successful login
-        if "Welcome" in response.text:
+        if response.url == BASE_URL + "/":
             print(green("Login successful."))
         else:
             print(red("Login unsuccessful."))
@@ -159,11 +160,12 @@ def get_test_cases(session_requests, problem: int):
     # Write test cases
     index = 0
     for i, test_case in enumerate(test_cases):
-        if i % 3 == 0:
+        # print(test_case)
+        if test_case.startswith('/save/1'):
           print(f"Downloading test case {index} input ...", end=' ')
           urlretrieve(BASE_URL + test_case, test_cases_dir / f"test_{index:02d}.in")
           print("Done!")
-        if i % 3 == 1:
+        if test_case.startswith('/save/2'):
           print(f"Downloading test case {index} output ...", end=' ')
           urlretrieve(BASE_URL + test_case, test_cases_dir / f"test_{index:02d}.out")
           print("Done!")

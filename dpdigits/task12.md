@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-<!-- https://vn.spoj.com/problems/DEMSO/ -->
-=======
 Cho số nguyên dương $N$, dãy Calalan cấp $N$ là dãy số $C_0, C_1, \dots, C_{2N}$ được định nghĩa như sau:
 
 - $C_0 = C_{2N} = 0$
@@ -32,4 +29,3 @@ Sắp xếp các dãy Catalan theo thứ tự từ điển, đánh số hiệu c
 | Input                        | Output                  |
 | ---------------------------- | ----------------------- |
 | 4<br>11<br>0 1 2 3 2 1 2 1 0 | 0 1 2 3 2 1 0 1 0<br>12 |
->>>>>>> 008c52899c7fc473df083babc87bae4b943a070b
